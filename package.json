@@ -1,5 +1,5 @@
 {
-  "name": "@schematics/akita-compact",
+  "name": "schematics-akita-compact",
   "version": "0.0.0",
   "description": "Akita compact states",
   "scripts": {
@@ -19,5 +19,9 @@
     "@types/node": "^8.0.31",
     "jasmine": "^3.3.1",
     "typescript": "~3.5.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xuxicheta/akita-compact"
   }
 }
