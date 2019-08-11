@@ -6,7 +6,7 @@
       "factory": "./store/index#store",
       "schema": "./store/schema.json"
     },
-    "entityStore": {
+    "entity-store": {
       "description": "Entity Store",
       "factory": "./entity-store/index#entityStore",
       "schema": "./entity-store/schema.json"

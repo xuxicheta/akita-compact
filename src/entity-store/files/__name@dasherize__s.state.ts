@@ -1,10 +1,6 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-<% if (active) { %>
-import { ActiveState, createEntityQuery, createEntityStore, EntityState } from '@datorama/akita';
-<% } else { %>
-import { createEntityQuery, createEntityStore, EntityState } from '@datorama/akita';
-<% } %>
+<% if (active) { %>import { ActiveState, createEntityQuery, createEntityStore, EntityState } from '@datorama/akita';<% } else { %>import { createEntityQuery, createEntityStore, EntityState } from '@datorama/akita';<% } %>
 import { tap } from 'rxjs/operators';
 import { Observable } from 'rxjs/internal/Observable';
 
