@@ -1,0 +1,15 @@
+{
+  "$schema": "../node_modules/@angular-devkit/schematics/collection-schema.json",
+  "schematics": {
+    "store": {
+      "description": "Store",
+      "factory": "./store/index#store",
+      "schema": "./store/schema.json"
+    },
+    "entityStore": {
+      "description": "Entity Store",
+      "factory": "./entity-store/index#entityStore",
+      "schema": "./entity-store/schema.json"
+    }
+  }
+}

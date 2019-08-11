@@ -1,0 +1,23 @@
+{
+  "name": "@schematics/akita-compact",
+  "version": "0.0.0",
+  "description": "Akita compact states",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "npm run build && jasmine src/**/*_spec.js"
+  },
+  "keywords": [
+    "schematics"
+  ],
+  "author": "antshvets@gmail.com",
+  "license": "MIT",
+  "schematics": "./src/collection.json",
+  "dependencies": {
+    "@angular-devkit/core": "^8.2.1",
+    "@angular-devkit/schematics": "^8.2.1",
+    "@types/jasmine": "^3.3.9",
+    "@types/node": "^8.0.31",
+    "jasmine": "^3.3.1",
+    "typescript": "~3.5.3"
+  }
+}
