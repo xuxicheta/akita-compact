@@ -29,7 +29,7 @@ export class <%= classify(name) %>State {
   get() {
     const params = new HttpParams();
     return this.http.get <<%= classify(name) %>> ('api/<%= dasherize(name) %>', { params }).pipe(
-      tap(data => this.store.set(data)),
+      tap(data => this.store.update(data)),
     );
   }
 }
