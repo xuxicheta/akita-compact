@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { createQuery, createStore } from '@datorama/akita';
 import { tap } from 'rxjs/operators';
 
-interface <%= classify(name) %> {
+export interface <%= classify(name) %> {
 
 }
 

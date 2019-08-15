@@ -1,6 +1,6 @@
 {
   "name": "schematics-akita-compact",
-  "version": "0.0.2",
+  "version": "0.0.4",
   "description": "Akita compact states",
   "scripts": {
     "build": "tsc -p tsconfig.json",

@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 import { tap } from 'rxjs/operators';
 import { Observable } from 'rxjs/internal/Observable';
 
-interface <%= classify(name) %> {
+export interface <%= classify(name) %> {
 
 }
 <% if (active) { %>
