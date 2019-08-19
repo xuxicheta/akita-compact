@@ -17,7 +17,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/xuxicheta/akita-compact"
+    "url": "https://github.com/xuxicheta/schematics-akita-compact"
   },
   "devDependencies": {
     "@types/node": "^12.7.2",
