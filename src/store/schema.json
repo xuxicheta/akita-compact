@@ -20,6 +20,12 @@
       "$default": {
         "$source": "projectName"
       }
+    },
+    "path": {
+      "type": "string",
+      "format": "path",
+      "description": "The path to create the store service.",
+      "visible": false
     }
   },
   "required": ["name"]

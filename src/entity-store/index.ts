@@ -1,23 +1,25 @@
-import { Rule, SchematicContext, Tree, url, apply, template, mergeWith } from '@angular-devkit/schematics';
-import { strings } from '@angular-devkit/core';
+import { Rule, SchematicContext, Tree, url, apply, template, mergeWith, move } from '@angular-devkit/schematics';
+import { strings, normalize } from '@angular-devkit/core';
+import { getDefaultPath } from '../get-default-path';
 
 interface Schema {
   name: string;
   active?: boolean;
   idKey: string;
   project?: string;
+  path?: string;
 }
 
-export function entityStore(_options: Schema): Rule {
+export function entityStore(options: Schema): Rule {
   return (tree: Tree, _context: SchematicContext) => {
+    options.path = options.path || getDefaultPath(tree, options);
 
-    const sourceTemplates = url('./files');
-
-    const sourceParametrizedTemplates = apply(sourceTemplates, [
+    const sourceParametrizedTemplates = apply(url('./files'), [
       template({
-        ..._options,
+        ...options,
         ...strings,
-      })
+      }),
+      move(normalize(options.path))
     ]);
 
     return mergeWith(sourceParametrizedTemplates)(tree, _context);
