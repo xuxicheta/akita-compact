@@ -8,42 +8,41 @@ export interface <%= classify(name) %> {
 
 }
 <% if (active) { %>
-function createInitialState() {
-  return {
-    active: null,
-  };
-}
+const initialState(): <%= classify(name) %> => ({
+  active: null,
+});
 
 interface <%= classify(name) %>EntityState extends EntityState<<%= classify(name) %>>, ActiveState { }
 <% } else { %>
-function createInitialState() {
-  return {
-  };
-}
+const initialState(): <%= classify(name) %> => ({
+});
+
 interface <%= classify(name) %>EntityState extends EntityState<<%= classify(name) %>> { }
 <% } %>
 @Injectable({ providedIn: 'root' })
 export class <%= classify(name) %>sState {
-  private store = createEntityStore<<%= classify(name) %>EntityState>(createInitialState(), { name: '<%= dasherize(name) %>s', idKey: '<%= idKey %>' });
+  private store = createEntityStore <<%= classify(name) %> EntityState > (initialState(), {
+    name: '<%= dasherize(name) %>s',
+    idKey: '<%= idKey %>', 
+  });
   private query = createEntityQuery<<%= classify(name) %>EntityState>(this.store, {});
 
-  public all$: Observable<<%= classify(name) %>[]> = this.query.selectAll();
-  public count$: Observable<number> = this.query.selectCount();
-<% if (active) { %>
-  public active$ = this.query.selectActive() as Observable<<%= classify(name) %>>;
+  public selectAll = () => this.query.selectAll();
+  public selectCount = () => this.query.selectCount();
 
-  get active(): <%= classify(name) %> {
-    return this.query.getActive() as <%= classify(name) %>;
-  }
+<% if (active) { %>
+  public selectActive = () => this.query.selectActive() as Observable<<%= classify(name) %>>;
+  public active() = () => this.query.getActive() as <%= classify(name) %>;
 <% } %>
+
   constructor(
     private http: HttpClient,
   ) { }
 
-  get() {
+  fetch() {
     const params = new HttpParams();
     return this.http.get <<%= classify(name) %>[]> ('api/<%= dasherize(name) %>', { params }).pipe(
-      tap(balances => this.store.update({ balances })),
+      tap(entities => this.store.set(entities)),
     );
   }
 }
