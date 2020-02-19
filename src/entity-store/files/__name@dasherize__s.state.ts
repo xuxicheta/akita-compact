@@ -1,6 +1,6 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-<% if (active) { %>import { ActiveState, createEntityQuery, createEntityStore, EntityState } from '@datorama/akita';<% } else { %>import { createEntityQuery, createEntityStore, EntityState } from '@datorama/akita';<% } %>
+<% if (active) { %>import { ActiveState, createEntityQuery, createEntityStore, EntityState, ID } from '@datorama/akita';<% } else { %>import { createEntityQuery, createEntityStore, EntityState } from '@datorama/akita';<% } %>
 import { tap } from 'rxjs/operators';
 import { Observable } from 'rxjs/internal/Observable';
 
@@ -32,7 +32,8 @@ export class <%= classify(name) %>sState {
 
 <% if (active) { %>
   public selectActive = () => this.query.selectActive() as Observable<<%= classify(name) %>>;
-  public active() = () => this.query.getActive() as <%= classify(name) %>;
+  public getActive = () => this.query.getActive() as <%= classify(name) %>;
+  public setActive = (id: ID) => this.store.setActive(id);
 <% } %>
 
   constructor(
