@@ -3,18 +3,16 @@ import { Injectable } from '@angular/core';
 <% if (active) { %>import { ActiveState, createEntityQuery, createEntityStore, EntityState, ID } from '@datorama/akita';<% } else { %>import { createEntityQuery, createEntityStore, EntityState } from '@datorama/akita';<% } %>
 import { tap } from 'rxjs/operators';
 import { Observable } from 'rxjs/internal/Observable';
+import { <%= classify(name) %> } from 'src/models';
 
-export interface <%= classify(name) %> {
-
-}
 <% if (active) { %>
-const initialState(): <%= classify(name) %> => ({
+const initialState = (): <%= classify(name) %> => ({
   active: null,
 });
 
 interface <%= classify(name) %>EntityState extends EntityState<<%= classify(name) %>>, ActiveState { }
 <% } else { %>
-const initialState(): <%= classify(name) %> => ({
+const initialState = (): <%= classify(name) %> => ({
 });
 
 interface <%= classify(name) %>EntityState extends EntityState<<%= classify(name) %>> { }
