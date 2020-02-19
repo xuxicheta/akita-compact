@@ -21,7 +21,7 @@ interface <%= classify(name) %>EntityState extends EntityState<<%= classify(name
 <% } %>
 @Injectable({ providedIn: 'root' })
 export class <%= classify(name) %>sState {
-  private store = createEntityStore <<%= classify(name) %> EntityState > (initialState(), {
+  private store = createEntityStore<<%= classify(name) %>EntityState>(initialState(), {
     name: '<%= dasherize(name) %>s',
     idKey: '<%= idKey %>', 
   });
