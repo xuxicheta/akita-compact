@@ -9,7 +9,7 @@ interface Schema {
 }
 
 export function store(options: Schema): Rule {
-  return (tree: Tree, _context: SchematicContext) => {
+  return (tree: Tree, context: SchematicContext) => {
     options.path = options.path || getDefaultPath(tree, options);
 
     const sourceParametrizedTemplates = apply(url('./files'), [
@@ -20,7 +20,7 @@ export function store(options: Schema): Rule {
       move(normalize(options.path))
     ]);
 
-    return mergeWith(sourceParametrizedTemplates)(tree, _context);
+    return mergeWith(sourceParametrizedTemplates)(tree, context);
   };
 }
 
