@@ -6,6 +6,7 @@ interface Schema {
   name: string;
   active?: boolean;
   idKey: string;
+  hasCache: string;
   project?: string;
   path?: string;
 }

@@ -6,13 +6,13 @@ import { Observable } from 'rxjs/internal/Observable';
 import { <%= classify(name) %> } from 'src/models';
 
 <% if (active) { %>
-const initialState = (): <%= classify(name) %> => ({
+const initialState = (): <%= classify(name) %>EntityState => ({
   active: null,
 });
 
 interface <%= classify(name) %>EntityState extends EntityState<<%= classify(name) %>>, ActiveState { }
 <% } else { %>
-const initialState = (): <%= classify(name) %> => ({
+const initialState = (): <%= classify(name) %>EntityState => ({
 });
 
 interface <%= classify(name) %>EntityState extends EntityState<<%= classify(name) %>> { }
@@ -22,6 +22,9 @@ export class <%= classify(name) %>sState {
   private store = createEntityStore<<%= classify(name) %>EntityState>(initialState(), {
     name: '<%= dasherize(name) %>s',
     idKey: '<%= idKey %>',
+<% if (hasCache) { %>
+    cache: { ttl: FILLME },
+<% } %>
   });
   private query = createEntityQuery<<%= classify(name) %>EntityState>(this.store, {});
 
@@ -38,7 +41,12 @@ export class <%= classify(name) %>sState {
     private http: HttpClient,
   ) { }
 
-  fetch() {
+  fetchAll() {
+<% if (hasCache) { %>
+    if (this.query.getHasCache()) {
+      return this.query.selectAll();
+    }
+<% } %>
     const params = new HttpParams();
     return this.http.get <<%= classify(name) %>[]> ('api/<%= dasherize(name) %>', { params }).pipe(
       tap(entities => this.store.set(entities)),
