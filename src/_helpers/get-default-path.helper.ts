@@ -1,5 +1,5 @@
 import { Tree } from "@angular-devkit/schematics/src/tree/interface";
-import { SchematicsException } from "@angular-devkit/schematics";
+// import { SchematicsException } from "@angular-devkit/schematics";
 import { experimental } from "@angular-devkit/core";
 
 interface ProjectOptions {
@@ -10,7 +10,8 @@ interface ProjectOptions {
 export function getDefaultPath(tree: Tree, options: ProjectOptions): string {
   const workspaceConfig = tree.read('/angular.json');
   if (!workspaceConfig) {
-    throw new SchematicsException('Could not find Angular workspace configuration');
+    // throw new SchematicsException('Could not find Angular workspace configuration');
+    return '';
   }
 
   const workspace: experimental.workspace.WorkspaceSchema = JSON.parse(workspaceConfig.toString());

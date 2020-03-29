@@ -21,7 +21,7 @@ interface <%= classify(name) %>EntityState extends EntityState<<%= classify(name
 export class <%= classify(name) %>sState {
   private store = createEntityStore<<%= classify(name) %>EntityState>(initialState(), {
     name: '<%= dasherize(name) %>s',
-    idKey: '<%= idKey %>', 
+    idKey: '<%= idKey %>',
   });
   private query = createEntityQuery<<%= classify(name) %>EntityState>(this.store, {});
 

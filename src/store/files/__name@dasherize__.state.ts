@@ -7,18 +7,19 @@ export interface <%= classify(name) %> {
 
 }
 
-const initialState(): <%= classify(name) %> => ({
+const initialState = (): <%= classify(name) %> => ({
 });
 
 @Injectable({ providedIn: 'root' })
 export class <%= classify(name) %>State {
   private store = createStore <<%= classify(name) %>> (initialState(), {
-    name: '<%= dasherize(name) %>' 
+    name: '<%= dasherize(name) %>',
   });
   private query = createQuery<<%= classify(name) %>>(this.store);
 
-  public select = () => this.query.select();
+  public select = <R>(project?: (store: <%= classify(name) %>) => R) => this.query.select(project);
   public getValue = () => this.query.getValue();
+  public update = (state: Partial<<%= classify(name) %>>) => this.store.update(state);
 
   constructor(
     private http: HttpClient,

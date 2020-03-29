@@ -1,4 +1,4 @@
-import { Rule, SchematicContext, Tree, url, apply, template, mergeWith, move } from '@angular-devkit/schematics';
+import { Rule, SchematicContext, Tree, url, apply, template, mergeWith, move, Source } from '@angular-devkit/schematics';
 import { strings, normalize } from '@angular-devkit/core';
 import { getDefaultPath } from '../_helpers/get-default-path.helper';
 
@@ -11,14 +11,15 @@ interface Schema {
 
 export function store(options: Schema): Rule {
   return (tree: Tree, context: SchematicContext) => {
-    options.path = options.path || getDefaultPath(tree, options);
+    options.path = options.path || getDefaultPath(tree, options) /* || process.cwd() */;
+    const normalizedPath = normalize(options.path);
 
-    const sourceParametrizedTemplates = apply(url('./files'), [
+    const sourceParametrizedTemplates: Source = apply(url('./files'), [
       template({
         ...options,
         ...strings,
       }),
-      move(normalize(options.path))
+      move(normalizedPath),
     ]);
 
     return mergeWith(sourceParametrizedTemplates)(tree, context);

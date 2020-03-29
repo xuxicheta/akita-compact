@@ -1,6 +1,6 @@
 {
-  "name": "schematics-akita-compact",
-  "version": "0.3.3",
+  "name": "schematics-helpmate",
+  "version": "0.3.4",
   "description": "Akita compact states",
   "scripts": {
     "build": "tsc -p tsconfig.json",
@@ -18,9 +18,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/xuxicheta/schematics-akita-compact"
+    "url": "https://github.com/xuxicheta/schematics-helpmate"
   },
   "devDependencies": {
+    "@angular-devkit/schematics-cli": "^0.900.5",
     "@types/node": "^12.7.2",
     "typescript": "~3.5.3"
   }
