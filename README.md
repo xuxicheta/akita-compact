@@ -1,14 +1,14 @@
 ## Install
 ```
-npm install schematics-akita-compact
+npm install schematics-helpmate
 ```
 
 ## Generate store service
 ```
- ng generate schematics-akita-compact:store
+ ng generate schematics-helpmate:store
 ```
 
 ## Generate entity store service
 ```
- ng generate schematics-akita-compact:entity-store
+ ng generate schematics-helpmate:entity-store
 ```
